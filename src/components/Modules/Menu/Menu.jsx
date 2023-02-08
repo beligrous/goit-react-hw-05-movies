@@ -1,14 +1,15 @@
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { Container, Item } from 'components/Modules/Menu/menu.styled';
 function Menu() {
   return (
-    <ul>
+    <Container>
       <li>
-        <NavLink to={'/'}>Home</NavLink>
+        <Item to={'/'}>Home</Item>
       </li>
       <li>
-        <NavLink to={'/movies'}>Movies</NavLink>
+        <Item to={'/movies'}>Movies</Item>
       </li>
-    </ul>
+    </Container>
   );
 }
 
