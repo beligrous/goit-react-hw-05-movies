@@ -18,7 +18,7 @@ function MovieDetails() {
       setOverview(result.overview);
     };
     fetchFilmById(id);
-  }, []);
+  }, [id]);
 
   return (
     <>
