@@ -10,7 +10,7 @@ export const App = () => {
       <Menu />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movies/:id" element={<MoviePage />} />
+        <Route path="/movies/:id/*" element={<MoviePage />} />
       </Routes>
     </Container>
   );
