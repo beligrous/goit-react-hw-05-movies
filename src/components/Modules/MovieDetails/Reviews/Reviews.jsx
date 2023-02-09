@@ -1,5 +1,5 @@
-function Cast() {
+function Reviews() {
   return <p>Review of film</p>;
 }
 
-export default Cast;
+export default Reviews;

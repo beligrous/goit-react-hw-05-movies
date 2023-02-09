@@ -18,14 +18,12 @@ export async function getFilmById(id) {
   return data;
 }
 
-// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-// const KEY = 'c23d7755b502540a74ef819e02a6a593';
+export async function getReviews(id) {
+  const { data } = await instance.get(`/movie/${id}/reviews`);
+  return data;
+}
 
-// export async function getFilms(page = 1) {
-//   const r = await axios
-//     .get(
-//       `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&language=en-US&page=${page}`
-//     )
-//     .then(res => res.data);
-//   return r;
-// }
+export async function getCast(id) {
+  const { data } = await instance.get(`/movie/${id}/credits`);
+  return data;
+}
