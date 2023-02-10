@@ -19,9 +19,23 @@ export async function getFilmById(id) {
 }
 
 export async function getFilmSearch(search) {
-  const { data } = await instance.get(`/search/movie/`, { query: search });
+  const { data } = await instance.get(`/search/movie/?query=${search}`);
   return data;
 }
+
+// axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+// const KEY = 'c23d7755b502540a74ef819e02a6a593';
+// const page = 1;
+// const query = '';
+
+// export async function getFilmSearch() {
+//   const r = await axios
+//     .get(
+//       `/search/movie?api_key=${KEY}&query=${query}&language=en-US&page=${page}`
+//     )
+//     .then(res => res.data);
+//   return r.results;
+// }
 
 export async function getReviews(id) {
   const { data } = await instance.get(`/movie/${id}/reviews`);

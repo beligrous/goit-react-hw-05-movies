@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getFilms } from 'service/api/getFilms';
+import FilmList from '../FilmList/FilmList';
 
 function Trending() {
   const [items, setItems] = useState([]);
@@ -22,19 +22,7 @@ function Trending() {
     fetchFilms();
   }, []);
 
-  const filmList = items.map(({ id, title }) => (
-    <li key={id}>
-      <Link to={`/movies/${id}`}>{title}</Link>
-    </li>
-  ));
-
-  return (
-    <>
-      {loading && <p>please wait, loading...</p>}
-      <ul>{filmList}</ul>
-      {error && <p>{error}</p>}
-    </>
-  );
+  return <FilmList items={items} loading={loading} error={error} />;
 }
 
 export default Trending;
