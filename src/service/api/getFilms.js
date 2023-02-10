@@ -18,6 +18,11 @@ export async function getFilmById(id) {
   return data;
 }
 
+export async function getFilmSearch(search) {
+  const { data } = await instance.get(`/search/movie/`, { query: search });
+  return data;
+}
+
 export async function getReviews(id) {
   const { data } = await instance.get(`/movie/${id}/reviews`);
   return data;
