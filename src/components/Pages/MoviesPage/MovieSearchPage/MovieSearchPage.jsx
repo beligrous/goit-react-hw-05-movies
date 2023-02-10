@@ -5,16 +5,15 @@ function MovieSearchPage() {
   const search = searchParams.get('search');
   console.log(search);
 
-  const handleSubmit = () => {};
+  const handleSubmit = e => {
+    // e.preventDefault();
+    setSearchParams({ search: e.target.value });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <input
-          type="text"
-          value={search}
-          onChange={e => setSearchParams({ search: e.target.value })}
-        />
+        <input type="text" value={search} onChange={handleSubmit} />
       </label>
       <button type="submit">Search</button>
     </form>

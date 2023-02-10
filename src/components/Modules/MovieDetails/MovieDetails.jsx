@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getFilmById } from 'service/api/getFilms';
 import { Card, Title, Wrap } from './movie-details.styled';
 
@@ -12,6 +12,7 @@ function MovieDetails() {
   const [year, setYear] = useState('');
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFilmById = async id => {
@@ -33,29 +34,36 @@ function MovieDetails() {
     fetchFilmById(id);
   }, [id]);
 
+  const handleBack = () => navigate(-1);
+
   return (
-    <Card>
-      <img
-        src={`https://image.tmdb.org/t/p/w400${poster_path}`}
-        alt={title}
-        width={300}
-      />
-      <div>
-        <Title>
-          {title}
-          {`(${year[0]})`}
-        </Title>
-        <p>
-          <Wrap>User Score:</Wrap> {popularity.toFixed(1)}
-        </p>
-        <p>
-          <Wrap>Genres:</Wrap> {genres.join(' ')}
-        </p>
-        <p>
-          <Wrap>Overview:</Wrap> {overview}
-        </p>
-      </div>
-    </Card>
+    <>
+      <button type="button" onClick={handleBack}>
+        &#8678; Go back
+      </button>
+      <Card>
+        <img
+          src={`https://image.tmdb.org/t/p/w400${poster_path}`}
+          alt={title}
+          width={300}
+        />
+        <div>
+          <Title>
+            {title}
+            {`(${year[0]})`}
+          </Title>
+          <p>
+            <Wrap>User Score:</Wrap> {popularity.toFixed(1)}
+          </p>
+          <p>
+            <Wrap>Genres:</Wrap> {genres.join(' ')}
+          </p>
+          <p>
+            <Wrap>Overview:</Wrap> {overview}
+          </p>
+        </div>
+      </Card>
+    </>
   );
 }
 

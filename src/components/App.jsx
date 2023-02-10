@@ -6,6 +6,10 @@ import MoviePage from './Pages/MoviesPage/MoviesPage';
 import MovieSearchPage from './Pages/MoviesPage/MovieSearchPage/MovieSearchPage';
 
 export const App = () => {
+  //   const handleSearch = ({ search }) => {
+  //     console.log(search);
+  //   };
+
   return (
     <Container>
       <Menu />
