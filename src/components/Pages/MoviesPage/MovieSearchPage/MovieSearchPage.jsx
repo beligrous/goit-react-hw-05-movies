@@ -5,6 +5,7 @@ import FilmList from 'components/Modules/FilmList/FilmList';
 
 function MovieSearchPage() {
   const [items, setItems] = useState([]);
+  const [q, setQ] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams({ search: '' });
@@ -15,7 +16,8 @@ function MovieSearchPage() {
       setLoading(true);
       try {
         const data = await getFilmSearch(search);
-        setItems(data.results);
+        console.log(data);
+        setItems(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -27,10 +29,10 @@ function MovieSearchPage() {
     }
   }, [search]);
 
-  console.log(items);
 
   const handleSubmit = e => {
     e.preventDefault();
+    setSearchParams({ search: q })
   };
 
   return (
@@ -39,8 +41,8 @@ function MovieSearchPage() {
         <label>
           <input
             type="text"
-            value={search}
-            onChange={e => setSearchParams({ search: e.target.value })}
+            value={q}
+            onChange={e => setQ(e.target.value)}
           />
         </label>
         <button type="submit">Search</button>
