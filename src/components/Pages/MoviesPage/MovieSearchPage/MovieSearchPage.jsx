@@ -16,8 +16,7 @@ function MovieSearchPage() {
       setLoading(true);
       try {
         const data = await getFilmSearch(search);
-        console.log(data);
-        setItems(data);
+          setItems(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -41,6 +40,7 @@ function MovieSearchPage() {
         <label>
           <input
             type="text"
+            required
             value={q}
             onChange={e => setQ(e.target.value)}
           />
