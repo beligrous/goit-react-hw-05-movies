@@ -26,7 +26,7 @@ export async function getFilmById(id) {
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const KEY = 'c23d7755b502540a74ef819e02a6a593';
 const page = 1;
-const query = '';
+// const query = '';
 
 export async function getFilmSearch(query) {
   const r = await axios
