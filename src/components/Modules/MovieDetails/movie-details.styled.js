@@ -14,3 +14,8 @@ export const Wrap = styled.span`
   font-size: large;
   font-weight: 600;
 `;
+
+export const Button = styled.button`
+position: absolute;
+
+`;

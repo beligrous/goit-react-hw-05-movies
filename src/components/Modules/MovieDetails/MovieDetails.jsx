@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getFilmById } from 'service/api/getFilms';
-import { Card, Title, Wrap } from './movie-details.styled';
+import { Card, Title, Wrap, Button } from './movie-details.styled';
 
 function MovieDetails() {
   const [title, setTitle] = useState('');
@@ -38,9 +38,9 @@ function MovieDetails() {
 
   return (
     <>
-      <button type="button" onClick={handleBack}>
+      <Button type="button" onClick={handleBack}>
         &#8678; Go back
-      </button>
+      </Button>
       <Card>
         <img
           src={`https://image.tmdb.org/t/p/w400${poster_path}`}
