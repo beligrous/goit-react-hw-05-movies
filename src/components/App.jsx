@@ -8,9 +8,6 @@ import Cast from 'components/Modules/MovieDetails/Cast/Cast';
 import Reviews from 'components/Modules/MovieDetails/Reviews/Reviews';
 
 export const App = () => {
-  //   const handleSearch = ({ search }) => {
-  //     console.log(search);
-  //   };
 
   return (
     <Container>
