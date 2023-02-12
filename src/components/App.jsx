@@ -1,28 +1,41 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Container } from './app.styled';
-import Menu from './Modules/Menu/Menu';
-import HomePage from './Pages/HomePage/HomePage';
-import MoviePage from './Pages/MoviesPage/MoviesPage';
-import MovieSearchPage from './Pages/MoviesPage/MovieSearchPage/MovieSearchPage';
-import Cast from 'components/Modules/MovieDetails/Cast/Cast';
-import Reviews from 'components/Modules/MovieDetails/Reviews/Reviews';
-import AdditionalInformation from './Modules/MovieDetails/AdditionalInformation/AdditionalInformation';
+import { Container, Ring } from './app.styled';
+import { ColorRing } from 'react-loader-spinner';
+
+const Menu = lazy(()=>import('./Modules/Menu/Menu'));
+const HomePage = lazy(()=>import('./Pages/HomePage/HomePage'));
+const MoviePage = lazy(()=>import('./Pages/MoviesPage/MoviesPage'));
+const MovieSearchPage = lazy(()=>import('./Pages/MoviesPage/MovieSearchPage/MovieSearchPage'));
+const Cast = lazy(()=>import('components/Modules/MovieDetails/Cast/Cast'));
+const Reviews = lazy(()=>import('components/Modules/MovieDetails/Reviews/Reviews'));
+const AdditionalInformation = lazy(()=>import('./Modules/MovieDetails/AdditionalInformation/AdditionalInformation'));
 
 export const App = () => {
 
   return (
     <Container>
+      <Suspense fallback={<Ring><ColorRing
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/></Ring>}>
       <Menu />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MovieSearchPage />} />
-        <Route path="/movies/:id/*" element={<MoviePage />} >
-          <Route path="" element={<AdditionalInformation/>}/>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<HomePage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MovieSearchPage />} />
+          <Route path="/movies/:id/*" element={<MoviePage />} >
+            <Route path="" element={<AdditionalInformation/>}/>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </Suspense>
     </Container>
   );
 };
