@@ -54,6 +54,6 @@ function MovieSearchPage() {
 
 export default MovieSearchPage;
 
-MovieSearchPage.preventDefaultProps = {
+MovieSearchPage.defaultProps = {
   items: [],
 };

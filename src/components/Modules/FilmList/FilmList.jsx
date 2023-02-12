@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 function FilmList({ items, loading, error }) {
   const location = useLocation();
@@ -18,3 +19,11 @@ function FilmList({ items, loading, error }) {
 }
 
 export default FilmList;
+
+FilmList.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape(
+    {id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }
+  ))
+}
