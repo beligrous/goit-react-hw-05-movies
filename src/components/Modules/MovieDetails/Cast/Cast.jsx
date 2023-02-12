@@ -27,7 +27,7 @@ function Cast() {
   },[id]);
 
   const elements = items.map(({cast_id, profile_path, name, character})=><li key={cast_id}><img src={`https://image.tmdb.org/t/p/original${profile_path}`}
-  alt={name}
+  alt='Actor name'
   width={100}/><p>{name}</p><p>Character: {character}</p></li>)
 
   return (<>{loading && <p>please wait, loading...</p>}
