@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getFilmById } from 'service/api/getFilms';
 import { Card, Title, Wrap, Button } from './movie-details.styled';
 
@@ -12,6 +12,7 @@ function MovieDetails() {
   const [year, setYear] = useState('');
 
   const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function MovieDetails() {
     fetchFilmById(id);
   }, [id]);
 
-  const handleBack = () => navigate(-1);
+  const handleBack = () => navigate(location.state.from);
 
   return (
     <>

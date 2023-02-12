@@ -25,10 +25,10 @@ function Reviews() {
       fetchReviews(id);
   },[id]);
 
-  const elements = items.map(({id, content, author})=><li key={id}><p>Author: {author}</p><p>{content}</p></li>)
+  const elements = items.map(({id, content, author, created_at})=><li key={id}><p>Author: {author}</p><p>Date: {created_at}</p><p>{content}</p></li>)
 
   return (<>{loading && <p>please wait, loading...</p>}
-  <ul>{elements}</ul>
+  <ul>{items.length > 0 ? elements: <p>There is no reviews on this movie</p>}</ul>
   {error && <p>{error}</p>}</>);
 }
 
