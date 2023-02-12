@@ -1,7 +1,9 @@
 
 import { getCast } from 'service/api/getFilms';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import {Container} from './cast.styled';
+
 
 function Cast() {
   const [items, setItems] = useState([]);
@@ -24,12 +26,12 @@ function Cast() {
       fetchCast(id);
   },[id]);
 
-  const elements = items.map(({cast_id, profile_path, name, character})=><li key={cast_id}><img src={`https://image.tmdb.org/t/p/w100${profile_path}`}
+  const elements = items.map(({cast_id, profile_path, name, character})=><li key={cast_id}><img src={`https://image.tmdb.org/t/p/original${profile_path}`}
   alt={name}
   width={100}/><p>{name}</p><p>Character: {character}</p></li>)
 
   return (<>{loading && <p>please wait, loading...</p>}
-  <ul>{elements}</ul>
+  <Container>{elements}</Container>
   {error && <p>{error}</p>}</>);
 }
 
