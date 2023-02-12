@@ -11,5 +11,5 @@ export const Ring = styled.div`
 position: absolute;
 top: 50%;
 right:50%;
-transform: translateX(-50%);
+transform: translate(-50%);
 `;
