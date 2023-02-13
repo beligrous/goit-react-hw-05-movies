@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 export const Card = styled.div`
@@ -16,6 +17,23 @@ export const Wrap = styled.span`
 `;
 
 export const Button = styled.button`
-position: absolute;
+  position: absolute;
+`;
 
+export const AdditionalTitle = styled.p`
+  text-align: center;
+  font-size: large;
+  font-weight: 600;
+`;
+
+export const AddInform = styled(Link)`
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 `;

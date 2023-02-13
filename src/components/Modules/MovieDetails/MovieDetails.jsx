@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { getFilmById } from 'service/api/getFilms';
-import { Card, Title, Wrap, Button } from './movie-details.styled';
+import {
+  Card,
+  Title,
+  Wrap,
+  Button,
+  AdditionalTitle,
+  AddInform,
+  Container,
+} from './movie-details.styled';
 
 function MovieDetails() {
   const [title, setTitle] = useState('');
@@ -64,6 +73,22 @@ function MovieDetails() {
           </p>
         </div>
       </Card>
+      <Container>
+        <AdditionalTitle>Additional information</AdditionalTitle>
+        <AddInform
+          state={{ from: location.state.from }}
+          to={`/movies/${id}/cast`}
+        >
+          Cast
+        </AddInform>
+        <AddInform
+          state={{ from: location.state.from }}
+          to={`/movies/${id}/reviews`}
+        >
+          Reviews
+        </AddInform>
+      </Container>
+      <Outlet />
     </>
   );
 }

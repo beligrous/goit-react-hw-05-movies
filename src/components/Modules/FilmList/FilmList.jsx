@@ -5,7 +5,9 @@ function FilmList({ items, loading, error }) {
   const location = useLocation();
   const filmList = items.map(({ id, title }) => (
     <li key={id}>
-      <Link state={{from: location}} to={`/movies/${id}`}>{title}</Link>
+      <Link state={{ from: location }} to={`/movies/${id}`}>
+        {title}
+      </Link>
     </li>
   ));
 
@@ -21,9 +23,10 @@ function FilmList({ items, loading, error }) {
 export default FilmList;
 
 FilmList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(
-    {id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  }
-  ))
-}
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+};
