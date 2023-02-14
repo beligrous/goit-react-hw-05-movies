@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { getFilmById } from 'service/api/getFilms';
@@ -88,7 +88,9 @@ function MovieDetails() {
           Reviews
         </AddInform>
       </Container>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 }

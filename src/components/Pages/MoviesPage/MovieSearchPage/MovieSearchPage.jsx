@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getFilmSearch } from 'service/api/getFilms';
 import FilmList from 'components/Modules/FilmList/FilmList';
 
@@ -10,10 +10,9 @@ function MovieSearchPage() {
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams({ search: '' });
   const search = searchParams.get('search');
-  const SearchInfo = useLocation();
 
   useEffect(() => {
-    setQ(SearchInfo.search.replace('?search=', ''));
+    setQ(search);
     const fetchFilm = async () => {
       setLoading(true);
       try {
@@ -28,7 +27,7 @@ function MovieSearchPage() {
     if (search) {
       fetchFilm();
     }
-  }, [search, SearchInfo]);
+  }, [search, searchParams.search]);
 
   const handleSubmit = e => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Container, Ring } from './app.styled';
 import { ColorRing } from 'react-loader-spinner';
 
@@ -40,7 +40,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="/*" element={<HomePage />} />
+          <Route path="/*" element={<Navigate to={'/'} replace />} />
         </Routes>
       </Suspense>
     </Container>
